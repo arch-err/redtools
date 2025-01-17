@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+test -z "$IP" && printf "Target IP: " && read IP
+test -z "$IP" && printf "Target IP is not valid, Quitting...\n" && exit 0
+
+OUTFILE="$IP"_shotgun.nmap
+
+printf "*Firing the shotgun*\n"
+printf "(a widespread port scan of a single target ip)\n"
+printf "Saving output to: $OUTFILE\n"
+
+echo nmap "$IP" -p-
